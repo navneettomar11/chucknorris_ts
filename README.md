@@ -1,0 +1,1 @@
+For learing typescript I developed small web application using ChuckNorris Joke Rest Api.
