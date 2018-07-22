@@ -1,0 +1,27 @@
+{
+  "name": "chucknorris_ts_new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" "
+  },
+  "author": "Navneet Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jquery": "^3.3.5",
+    "concurrently": "^3.6.0",
+    "lite-server": "^2.4.0",
+    "plugin-typescript": "git+https://github.com/frankwallis/plugin-typescript.git",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "systemjs": "^0.21.4",
+    "typescript-starter": "^2.3.8"
+  }
+}
