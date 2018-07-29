@@ -3,11 +3,8 @@ import { HomeService } from "../service/home-service";
 import { Joke } from "../model/joke";
 
 export class HomePage extends Page{
-	private homeService:HomeService;
-
-	constructor(homeService: HomeService){
+	constructor(private homeService: HomeService){
 		super("Home");
-		this.homeService = homeService;
 	}
 	render(){
 		let _self = this;

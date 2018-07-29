@@ -14,6 +14,9 @@ export class Container extends BaseElement{
 			<header id='app-header'></header>
 			<main id="app-content"></main>
 			<footer id="app-footer"></footer>
+		,</div>
+		<div class="loading-indicator" id="loading">
+		<img src="../../ajax-loader.gif"  style="display:none" />
 		</div>`);
 	}
 

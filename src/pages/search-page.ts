@@ -19,8 +19,9 @@ export class Search extends Page{
 				</div>
 				<button type="submit" class="btn btn-default btn-search">Search</button>
 			</form>
+			<br/> 
 			<div class="jumbotron hidden search-container">
-				<h2>Search Result</h2>
+				<h2>Search Result</h2><br/>
 				<div class="search-result"></div>
 			</div>
 		`;

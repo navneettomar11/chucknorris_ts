@@ -1,4 +1,5 @@
 import { Joke } from "../model/joke";
+import { CHUCKNORRIS_RESTAPI_URL, BaseService } from "./base-service";
 
 
 export interface SearchResult {
@@ -6,23 +7,12 @@ export interface SearchResult {
 	result: Array<Joke>;
 }
 
-export class SearchService {
+export class SearchService extends BaseService{
 
-	private searchJokeUrl = "https://api.chucknorris.io/jokes/search?query=";
+	private searchJokeUrl = CHUCKNORRIS_RESTAPI_URL.SEARCH_JOKE_API;
 	
 	getSearchResult(searchQuery:string){
-		let deferred = $.Deferred();
-		$.ajax({
-			method: 'get',
-			url: `${this.searchJokeUrl+searchQuery}`,
-			success: function(response){
-				deferred.resolve(response);
-			}, 
-			error: function(error){
-				deferred.reject(error)
-			}
-		});
-		return deferred.promise();
+		return this.requestMethod(`${this.searchJokeUrl+searchQuery}`);
 	}
 
 	

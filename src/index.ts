@@ -25,21 +25,12 @@ export function main(el:HTMLElement) {
 	container.appendToElement(el);
 	container.addRoute("/", new HomePage(new HomeService()),true, true);
 	container.addRoute("/search", new Search(new SearchService()));
-	container.addRoute("/categories", new CategoryPage());
+	container.addRoute("/categories", new CategoryPage(new CategoryService()));
 	container.addRoute("/about", new AboutPage());
 	container.addRoute("/contact", new ContactPage());
 	container.activeRoute();
 	container.addHeaderElement(new Header('Chucknorris Joke',menus));
 	container.addFooterElement(new Footer());
-	//initalize ajax loader
-	$( document ).ajaxStart(function() {
-		$( "#loading" ).show();
-	});
-
-	$( document ).ajaxStop(function() {
-		$( "#loading" ).hide();
-	  });
-	//CategoryService.getCategories().done(function(response){});
 }
 
 

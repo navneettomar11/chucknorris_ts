@@ -3,15 +3,13 @@ import { CategoryService } from "../service/category-service";
 
 export class CategoryPage extends Page{
 
-	constructor(){
+	constructor(private categoryService: CategoryService){
 		super("Categories");
-
 	}
 
 	render(){
-		
 		let _self = this;
-		CategoryService.getCategories().then(function(categories){
+		this.categoryService.getCategories().done(function(categories){
 			let categoryHtml =  categories.map((category)=>{
 				return `<a href="#" class="list-group-item category-link">${category}</a>`
 			}).join('');
@@ -34,12 +32,13 @@ export class CategoryPage extends Page{
 			</div>`;
 			_self.addContent(elementString);
 			
-			_self.element.on('click','a.category-link', function(event:Event){
+			_self.element.on('click','a.category-link', function(event:any){
 				event.preventDefault();
+				let element = $(event.target);
 				_self.element.find(".list-group-item").removeClass('active');
-				$(this).addClass('active');
-				let category = `${$(this).text()}`;
-				CategoryService.getJokeByCategory(category).then(function(joke){
+				element.addClass('active');
+				let category = `${element.text()}`;
+				_self.categoryService.getJokeByCategory(category).then(function(joke){
 					let categoryPanel = _self.element.find("div.category-panel");
 					categoryPanel.removeClass('hidden');
 					categoryPanel.find(".panel-heading").html(category);

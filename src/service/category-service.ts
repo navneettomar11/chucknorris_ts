@@ -1,34 +1,14 @@
 import  $ from 'jquery';
+import {CHUCKNORRIS_RESTAPI_URL, BaseService} from './base-service';
 
-export class CategoryService {
+export class CategoryService extends BaseService{
 
-	static getCategories(): any{
-		let deferred = $.Deferred();
-		$.ajax({
-			method: 'get',
-			url: 'https://api.chucknorris.io/jokes/categories',
-			success: function(response){
-				deferred.resolve(response);
-			}, 
-			error: function(error){
-				deferred.reject(error)
-			}
-		});
-		return deferred.promise();
+	getCategories(): any{
+		return this.requestMethod(CHUCKNORRIS_RESTAPI_URL.ALL_CATEGORIES_API);
+		
 	}
 
-	static getJokeByCategory(category:string){
-		let deferred = $.Deferred();
-		$.ajax({
-			method: 'get',
-			url: `https://api.chucknorris.io/jokes/random?category=${category}`,
-			success: function(response){
-				deferred.resolve(response);
-			}, 
-			error: function(error){
-				deferred.reject(error)
-			}
-		});
-		return deferred.promise();	
+	getJokeByCategory(category:string){
+		return this.requestMethod(`${CHUCKNORRIS_RESTAPI_URL.GET_JOKE_BY_CATEGORY_API}=${category}`)
 	}
 }

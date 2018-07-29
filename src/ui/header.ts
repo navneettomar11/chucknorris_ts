@@ -10,14 +10,8 @@ export interface MenuItem{
 
 export class Header extends BaseElement {
 
-	private menuItems:Array<MenuItem> = [];
-
-	private brandText:string;
-
-	constructor(brandText:string,menuItems:Array<MenuItem>){
+	constructor(private brandText:string,private menuItems:Array<MenuItem>){
 		super();
-		this.brandText = brandText;
-		this.menuItems = menuItems;
 	}
 
 	getElementByString():string{
@@ -48,9 +42,9 @@ export class Header extends BaseElement {
 
 	appendToElement(parent: any){
 		super.appendToElement(parent);
-		this.element.on('click', 'ul.app-menu> li > a', function(event:Event){
+		this.element.on('click', 'ul.app-menu> li > a', function(event:any){
 			event.preventDefault();
-			let hrefAttr = $(this).attr("href");
+			let hrefAttr = $(event.target).attr("href");
 			container.changeRoute(`${hrefAttr}`);
 		});
 		
